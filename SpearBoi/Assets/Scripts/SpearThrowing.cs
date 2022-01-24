@@ -4,14 +4,18 @@ using UnityEngine;
 
 public class SpearThrowing : MonoBehaviour
 {
+    [SerializeField] private int throwingSpeed;
+
     private GameObject spear;
     private bool spearThrown;
     private Vector2 lookRotation;
+    private Vector3 spearHeldPosition;
 
     // Start is called before the first frame update
     void Start()
     {
         spear = transform.GetChild(0).gameObject;
+        spearHeldPosition = transform.GetChild(1).transform.position;
     }
 
     // Update is called once per frame
@@ -32,7 +36,7 @@ public class SpearThrowing : MonoBehaviour
         if (Input.GetKeyUp(KeyCode.Mouse0) && !spearThrown)
         {
             spear.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.None;
-            spear.GetComponent<Rigidbody2D>().velocity += lookRotation.normalized * 5;
+            spear.GetComponent<Rigidbody2D>().velocity += lookRotation.normalized * throwingSpeed;
             spearThrown = true;
         }
     }
@@ -43,6 +47,19 @@ public class SpearThrowing : MonoBehaviour
         {
             spear.GetComponent<BoxCollider2D>().isTrigger = false;
             spear.GetComponentInChildren<EdgeCollider2D>().isTrigger = false;
+        }
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (spearThrown && collision.gameObject.CompareTag("Spear"))
+        {
+            spear.GetComponent<BoxCollider2D>().isTrigger = true;
+            spear.GetComponentInChildren<EdgeCollider2D>().isTrigger=true;
+            spear.transform.position =spearHeldPosition;
+            spear.transform.parent = transform;
+            spear.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeAll;
+            spearThrown = false;
         }
     }
 }
