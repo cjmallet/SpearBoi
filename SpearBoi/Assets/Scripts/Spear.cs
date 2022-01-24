@@ -32,8 +32,13 @@ public class Spear : MonoBehaviour
         transform.rotation = Quaternion.AngleAxis(angle,Vector3.forward);
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    public void CheckCollision(Collision2D collision)
     {
+        if (collision.transform.CompareTag("Stickable"))
+        {
+            rb.velocity = Vector2.zero;
+            rb.constraints = RigidbodyConstraints2D.FreezeAll;
+        }
         hasHit = true;
     }
 
