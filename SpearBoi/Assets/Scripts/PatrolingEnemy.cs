@@ -14,7 +14,7 @@ public class PatrolingEnemy : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        state = Random.Range(1,2);
+        state = 1;
     }
 
     // Update is called once per frame

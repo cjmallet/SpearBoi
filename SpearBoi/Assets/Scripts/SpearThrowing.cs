@@ -44,6 +44,7 @@ public class SpearThrowing : MonoBehaviour
             float lookAngle= Mathf.Atan2(lookRotation.y, lookRotation.x) * Mathf.Rad2Deg;
             spear.transform.rotation = Quaternion.Euler(0,0,lookAngle);
             spear.transform.position = spearHolder.transform.position;
+            spear.transform.localScale = Vector3.one;
         }
 
         if (Input.GetKey(KeyCode.E) && buttonPrompt.activeSelf)
@@ -55,7 +56,7 @@ public class SpearThrowing : MonoBehaviour
         {
             for (int x = 0; x < arcPoints.Length; x++)
             {
-                arcPoints[x].transform.position = CalculateArcPoint(x * 0.1f);
+                arcPoints[x].transform.position = CalculateArcPoint((x+1) * 0.05f);
                 arcPoints[x].SetActive(true);
             }
         }
