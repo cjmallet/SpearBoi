@@ -5,9 +5,11 @@ using UnityEngine;
 public class Spear : MonoBehaviour
 {
     [HideInInspector] public bool thrown;
+    [HideInInspector] public bool hasHit;
     public GameObject buttonPrompt;
 
-    private bool hasHit, playerInRange;
+
+    private bool playerInRange;
     private Rigidbody2D rb;
 
     // Start is called before the first frame update
@@ -32,6 +34,11 @@ public class Spear : MonoBehaviour
         else
         {
             buttonPrompt.SetActive(false);
+        }
+
+        if (thrown && rb.velocity==Vector2.zero)
+        {
+            hasHit = true;
         }
     }
 
@@ -61,18 +68,17 @@ public class Spear : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.transform.CompareTag("Stickable"))
+        if (collision.transform.CompareTag("Stickable")||collision.transform.CompareTag("Ground"))
         {
             rb.velocity = Vector2.zero;
             rb.constraints = RigidbodyConstraints2D.FreezeAll;
+            hasHit = true;
         }
 
-        if (collision.transform.CompareTag("Enemy"))
+        if (collision.transform.CompareTag("Enemy") && !hasHit)
         {
             collision.transform.GetComponent<PatrolingEnemy>().Die();
         }
-
-        hasHit = true;
     }
 
     public void ResetSpear()

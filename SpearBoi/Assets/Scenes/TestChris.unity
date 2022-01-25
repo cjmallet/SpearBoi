@@ -279,7 +279,7 @@ GameObject:
   - component: {fileID: 1379990991}
   m_Layer: 0
   m_Name: Ground
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -753,6 +753,7 @@ GameObject:
   - component: {fileID: 2130013905}
   - component: {fileID: 2130013904}
   - component: {fileID: 2130013903}
+  - component: {fileID: 2130013908}
   - component: {fileID: 2130013906}
   - component: {fileID: 2130013907}
   m_Layer: 0
@@ -789,7 +790,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.007940769, y: -0.0066812932}
+  m_Offset: {x: -0.3266377, y: -0.0066812932}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -800,7 +801,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 2.3134785, y: 0.4520678}
+  m_Size: {x: 1.6760846, y: 0.4520678}
   m_EdgeRadius: 0
 --- !u!50 &2130013904
 Rigidbody2D:
@@ -887,6 +888,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   thrown: 0
+  hasHit: 0
   buttonPrompt: {fileID: 1894662780}
 --- !u!58 &2130013907
 CircleCollider2D:
@@ -904,6 +906,29 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 2.1957624
+--- !u!68 &2130013908
+EdgeCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2130013901}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_EdgeRadius: 0
+  m_Points:
+  - {x: 0.52096677, y: -0.22432502}
+  - {x: 1.0878075, y: 0.0009961096}
+  - {x: 0.5130182, y: 0.21322283}
+  m_AdjacentStartPoint: {x: 0, y: 0}
+  m_AdjacentEndPoint: {x: 0, y: 0}
+  m_UseAdjacentStartPoint: 0
+  m_UseAdjacentEndPoint: 0
 --- !u!1001 &656794507362474510
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PatrolingEnemy : MonoBehaviour
 {
@@ -42,6 +43,22 @@ public class PatrolingEnemy : MonoBehaviour
             {
                 state = 1;
             }
+        }
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.transform.CompareTag("Spear"))
+        {
+            if (collision.transform.GetComponent<Spear>().hasHit)
+            {
+                Physics2D.IgnoreCollision(collision.collider,GetComponent<BoxCollider2D>());
+            }
+        }
+
+        if (collision.transform.CompareTag("Player"))
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
     }
 

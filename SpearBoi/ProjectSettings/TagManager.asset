@@ -8,6 +8,7 @@ TagManager:
   - Stickable
   - PatrolPoint
   - Enemy
+  - Ground
   layers:
   - Default
   - TransparentFX
