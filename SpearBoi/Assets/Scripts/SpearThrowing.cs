@@ -8,7 +8,6 @@ public class SpearThrowing : MonoBehaviour
     [SerializeField] private GameObject arcHolderObject;
     [SerializeField] private GameObject buttonPrompt;
     [SerializeField] private int throwingSpeed;
-    [SerializeField] private int gravityScale;
     [SerializeField] private int amountOfArcPoints;
 
     private GameObject[] arcPoints;

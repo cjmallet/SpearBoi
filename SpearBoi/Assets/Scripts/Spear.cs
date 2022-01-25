@@ -35,11 +35,6 @@ public class Spear : MonoBehaviour
         {
             buttonPrompt.SetActive(false);
         }
-
-        if (thrown && rb.velocity==Vector2.zero)
-        {
-            hasHit = true;
-        }
     }
 
     private void TrackMovement()
@@ -68,14 +63,19 @@ public class Spear : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.transform.CompareTag("Stickable")||collision.transform.CompareTag("Ground"))
+        if (collision.transform.CompareTag("Stickable"))
         {
             rb.velocity = Vector2.zero;
             rb.constraints = RigidbodyConstraints2D.FreezeAll;
             hasHit = true;
         }
 
-        if (collision.transform.CompareTag("Player"))
+        if (collision.transform.CompareTag("Ground"))
+        {
+            hasHit = true;
+        }
+
+        if (collision.transform.CompareTag("Player")&& !hasHit)
         {
             Physics2D.IgnoreCollision(collision.collider,GetComponent<EdgeCollider2D>());
         }
