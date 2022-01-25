@@ -25,9 +25,10 @@ public class SpearThrowing : MonoBehaviour
         for (int x=0; x<arcPoints.Length;x++)
         {
             arcPoints[x] = Instantiate(arcPoint, spear.transform.position,Quaternion.identity,arcHolderObject.transform);
+            arcPoints[x].SetActive(false);
         }
         
-        spearHeldPosition = transform.GetChild(1).transform.position;
+        spearHeldPosition = transform.GetChild(1).transform.localPosition;
     }
 
     // Update is called once per frame
@@ -54,6 +55,7 @@ public class SpearThrowing : MonoBehaviour
             spear.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.None;
             spear.GetComponent<Rigidbody2D>().velocity += lookRotation.normalized * throwingSpeed;
             spear.GetComponent<Spear>().thrown = true;
+            spear.transform.parent = null;
             spearThrown = true;
 
             for (int x = 0; x < arcPoints.Length; x++)
@@ -74,21 +76,15 @@ public class SpearThrowing : MonoBehaviour
         if (spearThrown&&collision.CompareTag("Spear"))
         {
             spear.GetComponent<BoxCollider2D>().isTrigger = false;
-            spear.GetComponentInChildren<EdgeCollider2D>().isTrigger = false;
         }
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    public void ResetSpear()
     {
-        if (spearThrown && collision.gameObject.CompareTag("Spear"))
-        {
-            spear.GetComponent<BoxCollider2D>().isTrigger = true;
-            spear.GetComponentInChildren<EdgeCollider2D>().isTrigger=true;
-            spear.transform.position =spearHeldPosition;
-            spear.transform.parent = transform;
-            spear.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeAll;
-            spear.GetComponent<Spear>().ResetSpear();
-            spearThrown = false;
-        }
+        spear.GetComponent<BoxCollider2D>().isTrigger = true;
+        spear.transform.localPosition = spearHeldPosition;
+        spear.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeAll;
+        spear.GetComponent<Spear>().ResetSpear();
+        spearThrown = false;
     }
 }
