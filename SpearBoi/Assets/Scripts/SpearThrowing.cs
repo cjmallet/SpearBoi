@@ -6,6 +6,7 @@ public class SpearThrowing : MonoBehaviour
 {
     [SerializeField] private GameObject arcPoint;
     [SerializeField] private GameObject arcHolderObject;
+    [SerializeField] private GameObject buttonPrompt;
     [SerializeField] private int throwingSpeed;
     [SerializeField] private int amountOfArcPoints;
 
@@ -19,7 +20,6 @@ public class SpearThrowing : MonoBehaviour
     void Start()
     {
         arcPoints = new GameObject[amountOfArcPoints];
-
         spear = transform.GetChild(0).gameObject;
 
         for (int x=0; x<arcPoints.Length;x++)
@@ -39,6 +39,11 @@ public class SpearThrowing : MonoBehaviour
             lookRotation = Camera.main.ScreenToWorldPoint(Input.mousePosition)-spear.transform.position;
             float lookAngle= Mathf.Atan2(lookRotation.y, lookRotation.x) * Mathf.Rad2Deg;
             spear.transform.rotation = Quaternion.Euler(0,0,lookAngle);
+        }
+
+        if (Input.GetKey(KeyCode.E) && buttonPrompt.activeSelf)
+        {
+            ResetSpear();
         }
 
         if (Input.GetKey(KeyCode.Mouse0)&&!spearThrown)
@@ -79,9 +84,10 @@ public class SpearThrowing : MonoBehaviour
         }
     }
 
-    public void ResetSpear()
+    private void ResetSpear()
     {
         spear.GetComponent<BoxCollider2D>().isTrigger = true;
+        spear.transform.parent = transform;
         spear.transform.localPosition = spearHeldPosition;
         spear.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeAll;
         spear.GetComponent<Spear>().ResetSpear();

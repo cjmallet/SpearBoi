@@ -5,8 +5,9 @@ using UnityEngine;
 public class Spear : MonoBehaviour
 {
     [HideInInspector] public bool thrown;
+    public GameObject buttonPrompt;
 
-    private bool hasHit;
+    private bool hasHit, playerInRange;
     private Rigidbody2D rb;
 
     // Start is called before the first frame update
@@ -22,6 +23,16 @@ public class Spear : MonoBehaviour
         {
             TrackMovement();
         }
+
+        if (playerInRange && thrown)
+        {
+            buttonPrompt.transform.position = new Vector2(transform.position.x, transform.position.y+2);
+            buttonPrompt.SetActive(true);
+        }
+        else
+        {
+            buttonPrompt.SetActive(false);
+        }
     }
 
     private void TrackMovement()
@@ -32,6 +43,22 @@ public class Spear : MonoBehaviour
         transform.rotation = Quaternion.AngleAxis(angle,Vector3.forward);
     }
 
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Player")&&!playerInRange)
+        {
+            playerInRange = true;
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Player")&& playerInRange)
+        {
+            playerInRange = false;
+        }
+    }
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.transform.CompareTag("Stickable"))
@@ -40,11 +67,6 @@ public class Spear : MonoBehaviour
             rb.constraints = RigidbodyConstraints2D.FreezeAll;
         }
 
-        if (collision.transform.CompareTag("Player"))
-        {
-            transform.parent = collision.transform;
-            GetComponentInParent<SpearThrowing>().ResetSpear();
-        }
         hasHit = true;
     }
 
