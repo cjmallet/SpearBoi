@@ -75,6 +75,11 @@ public class Spear : MonoBehaviour
             hasHit = true;
         }
 
+        if (collision.transform.CompareTag("Player"))
+        {
+            Physics2D.IgnoreCollision(collision.collider,GetComponent<EdgeCollider2D>());
+        }
+
         if (collision.transform.CompareTag("Enemy") && !hasHit)
         {
             collision.transform.GetComponent<PatrolingEnemy>().Die();

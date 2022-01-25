@@ -21,9 +21,10 @@ public class MoveWall : PressurePlate
 
     private void Update()
     {
+        Debug.Log(playerActivated+"  "+spearActivated);
         if (!destinationReached)
         {
-            movingObject.transform.localPosition = Vector3.MoveTowards(movingObject.transform.localPosition,destination,moveSpeed/1000f);
+            movingObject.transform.localPosition = Vector3.MoveTowards(movingObject.transform.localPosition, destination, moveSpeed / 1000f);
         }
 
         if (movingObject.transform.localPosition == destination)
@@ -60,25 +61,28 @@ public class MoveWall : PressurePlate
     public override void Deactivate()
     {
         base.Deactivate();
-      
-        switch (moveDirection)
+
+        if (!playerActivated && !spearActivated)
         {
-            case "Left":
-                destination = new Vector3(startPosition.x + moveDistance, startPosition.y, 0);
-                destinationReached = false;
-                break;
-            case "Right":
-                destination = new Vector3(startPosition.x - moveDistance, startPosition.y, 0);
-                destinationReached = false;
-                break;
-            case "Up":
-                destination = new Vector3(startPosition.x, movingObject.transform.position.y - moveDistance, 0);
-                destinationReached = false;
-                break;
-            case "Down":
-                destination = new Vector3(startPosition.x, movingObject.transform.position.y + moveDistance,0);
-                destinationReached = false;
-                break;
+            switch (moveDirection)
+            {
+                case "Left":
+                    destination = new Vector3(startPosition.x + moveDistance, startPosition.y, 0);
+                    destinationReached = false;
+                    break;
+                case "Right":
+                    destination = new Vector3(startPosition.x - moveDistance, startPosition.y, 0);
+                    destinationReached = false;
+                    break;
+                case "Up":
+                    destination = new Vector3(startPosition.x, movingObject.transform.position.y - moveDistance, 0);
+                    destinationReached = false;
+                    break;
+                case "Down":
+                    destination = new Vector3(startPosition.x, movingObject.transform.position.y + moveDistance, 0);
+                    destinationReached = false;
+                    break;
+            }
         }
     }
 }

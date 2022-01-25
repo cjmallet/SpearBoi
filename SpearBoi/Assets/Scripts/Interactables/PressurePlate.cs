@@ -4,30 +4,45 @@ using UnityEngine;
 
 public class PressurePlate : MonoBehaviour
 {
-    [HideInInspector]public bool activated;
+    [HideInInspector]public bool spearActivated;
+    [HideInInspector] public bool playerActivated;
 
     public virtual void Activate()
     {
-        activated = true;
+
     }
 
     public virtual void Deactivate()
     {
-        activated = false;
+
     }
 
-    private void OnTriggerStay2D(Collider2D collision)
+    private void OnCollisionEnter2D(Collision2D collision)
     {
-        if ((collision.transform.CompareTag("Player") || collision.transform.CompareTag("Spear")) && !activated)
+        if ((collision.transform.CompareTag("Player") && !playerActivated))
         {
+            playerActivated = true;
+            Activate();
+        }
+
+        if (collision.transform.CompareTag("Spear") && !spearActivated)
+        {
+            spearActivated = true;
             Activate();
         }
     }
 
     private void OnCollisionExit2D(Collision2D collision)
     {
-        if ((collision.transform.CompareTag("Player") || collision.transform.CompareTag("Spear")) && activated)
+        if (collision.transform.CompareTag("Spear") && spearActivated)
         {
+            spearActivated = false;
+            Deactivate();
+        }
+
+        if (collision.transform.CompareTag("Player") && spearActivated)
+        {
+            playerActivated = false;
             Deactivate();
         }
     }

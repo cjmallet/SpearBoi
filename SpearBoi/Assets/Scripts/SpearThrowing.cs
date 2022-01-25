@@ -8,10 +8,12 @@ public class SpearThrowing : MonoBehaviour
     [SerializeField] private GameObject arcHolderObject;
     [SerializeField] private GameObject buttonPrompt;
     [SerializeField] private int throwingSpeed;
+    [SerializeField] private int gravityScale;
     [SerializeField] private int amountOfArcPoints;
 
     private GameObject[] arcPoints;
     private GameObject spear;
+    private GameObject spearHolder;
     private bool spearThrown;
     private Vector2 lookRotation;
     private Vector3 spearHeldPosition;
@@ -29,6 +31,8 @@ public class SpearThrowing : MonoBehaviour
         }
         
         spearHeldPosition = transform.GetChild(1).transform.localPosition;
+        spearHolder = transform.GetChild(1).gameObject;
+        spear.transform.parent = null;
     }
 
     // Update is called once per frame
@@ -39,6 +43,7 @@ public class SpearThrowing : MonoBehaviour
             lookRotation = Camera.main.ScreenToWorldPoint(Input.mousePosition)-spear.transform.position;
             float lookAngle= Mathf.Atan2(lookRotation.y, lookRotation.x) * Mathf.Rad2Deg;
             spear.transform.rotation = Quaternion.Euler(0,0,lookAngle);
+            spear.transform.position = spearHolder.transform.position;
         }
 
         if (Input.GetKey(KeyCode.E) && buttonPrompt.activeSelf)
@@ -60,7 +65,6 @@ public class SpearThrowing : MonoBehaviour
             spear.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.None;
             spear.GetComponent<Rigidbody2D>().velocity += lookRotation.normalized * throwingSpeed;
             spear.GetComponent<Spear>().thrown = true;
-            spear.transform.parent = null;
             spearThrown = true;
 
             for (int x = 0; x < arcPoints.Length; x++)
@@ -80,17 +84,13 @@ public class SpearThrowing : MonoBehaviour
     {
         if (spearThrown&&collision.CompareTag("Spear"))
         {
-            spear.GetComponent<BoxCollider2D>().isTrigger = false;
             spear.GetComponent<EdgeCollider2D>().isTrigger = false;
         }
     }
 
     private void ResetSpear()
     {
-        spear.GetComponent<BoxCollider2D>().isTrigger = true;
         spear.GetComponent<EdgeCollider2D>().isTrigger = true;
-        spear.transform.parent = transform;
-        spear.transform.localPosition = spearHeldPosition;
         spear.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeAll;
         spear.GetComponent<Spear>().ResetSpear();
         spearThrown = false;
