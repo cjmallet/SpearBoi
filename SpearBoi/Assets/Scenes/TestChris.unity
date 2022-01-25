@@ -557,7 +557,7 @@ MonoBehaviour:
   arcPoint: {fileID: 965603618659123728, guid: e127219f3a9bda24b9445184a414e737, type: 3}
   arcHolderObject: {fileID: 642118608}
   buttonPrompt: {fileID: 1894662780}
-  throwingSpeed: 10
+  throwingSpeed: 20
   amountOfArcPoints: 20
 --- !u!114 &1701443941
 MonoBehaviour:
@@ -817,7 +817,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 2
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1

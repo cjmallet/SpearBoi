@@ -72,7 +72,7 @@ public class SpearThrowing : MonoBehaviour
 
     private Vector2 CalculateArcPoint(float t)
     {
-        Vector2 pointPosition = (Vector2)spear.transform.position+(lookRotation.normalized * throwingSpeed * t)+0.5f*Physics2D.gravity*(t*t);
+        Vector2 pointPosition = (Vector2)spear.transform.position+(lookRotation.normalized * throwingSpeed * t)+0.5f*(spear.GetComponent<Rigidbody2D>().gravityScale*Physics2D.gravity)*(t*t);
         return pointPosition;
     }
 
