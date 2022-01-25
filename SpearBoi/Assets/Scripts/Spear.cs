@@ -24,7 +24,7 @@ public class Spear : MonoBehaviour
             TrackMovement();
         }
 
-        if (playerInRange && thrown)
+        if (playerInRange && hasHit)
         {
             buttonPrompt.transform.position = new Vector2(transform.position.x, transform.position.y+2);
             buttonPrompt.SetActive(true);
