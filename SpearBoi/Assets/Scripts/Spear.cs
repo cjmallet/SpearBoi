@@ -67,6 +67,11 @@ public class Spear : MonoBehaviour
             rb.constraints = RigidbodyConstraints2D.FreezeAll;
         }
 
+        if (collision.transform.CompareTag("Enemy"))
+        {
+            collision.transform.GetComponent<PatrolingEnemy>().Die();
+        }
+
         hasHit = true;
     }
 
