@@ -81,12 +81,14 @@ public class SpearThrowing : MonoBehaviour
         if (spearThrown&&collision.CompareTag("Spear"))
         {
             spear.GetComponent<BoxCollider2D>().isTrigger = false;
+            spear.GetComponent<EdgeCollider2D>().isTrigger = false;
         }
     }
 
     private void ResetSpear()
     {
         spear.GetComponent<BoxCollider2D>().isTrigger = true;
+        spear.GetComponent<EdgeCollider2D>().isTrigger = true;
         spear.transform.parent = transform;
         spear.transform.localPosition = spearHeldPosition;
         spear.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeAll;
