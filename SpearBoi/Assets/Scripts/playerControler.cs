@@ -47,11 +47,6 @@ public class playerControler : MonoBehaviour
             rb.velocity = Vector2.up * jumpHeight;
             Debug.Log("amount of Jumps" + extraJumps);
         }
-
-       // if (Physics2D.Raycast(transform.position,-Vector2.up,100))
-        //{
-            //grounded = true;
-       //}
     }
 
     private void FixedUpdate()

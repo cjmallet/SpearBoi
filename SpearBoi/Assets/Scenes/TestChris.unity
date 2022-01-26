@@ -986,7 +986,7 @@ MonoBehaviour:
   whatIsGround:
     serializedVersion: 2
     m_Bits: 64
-  extraJumpsValue: 3
+  extraJumpsValue: 1
 --- !u!212 &1701443942
 SpriteRenderer:
   m_ObjectHideFlags: 0
