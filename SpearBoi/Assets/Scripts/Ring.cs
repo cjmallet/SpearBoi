@@ -5,14 +5,36 @@ using UnityEngine;
 public class Ring : MonoBehaviour
 {
     // Start is called before the first frame update
-    void Start()
+    public bool ringActive;
+    [SerializeField] private Material myMaterial;
+
+    public void Start()
+    {
+        ringActive = false;
+    }
+
+    public void Update()
     {
         
     }
-
-    // Update is called once per frame
-    void Update()
+    public virtual void Activate()
     {
-        
+        ringActive = true;
+        myMaterial.color = Color.green;
+
+    }
+    public virtual void Deactivate()
+    {
+        ringActive = false;
+        myMaterial.color = Color.red;
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        Debug.Log("oets");
+        if (collision.transform.CompareTag("Spear"))
+        {
+            ringActive = true;
+        }
     }
 }
