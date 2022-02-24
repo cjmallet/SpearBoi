@@ -1,3 +1,18 @@
+# Notice
+
+## No more development on 2d-extras GitHub repository
+
+We are changing how we develop additional 2D Tiles and Brushes for 2D Tilemap. An important part of this change involves ensuring a single point of entry for users to get the latest tiles and brushes for Tilemap. To this end we created the Tilemap Extras package which is accessible from Package Manager. Moving forward, the 2D-extras GitHub repository will be made read-only. You will still be able to clone and pull the contents of the repository as it is right now.
+
+Tilemap Extras already includes Animated Tiles, RuleTile (Rectangular Isometric and Hexagonal), the Rule Override Tiles, Group Brush, Line Brush, Random Brush and GameObject Brush. It also includes 3 samples covering common use-cases of Rule Tiles and Animated Tiles. Read more about Tilemap Extras in the announcement thread.
+
+If there is functionality in 2d-extras that is important to your team and your product please let us know in this thread or start a discussion in the 2D forums and we will consider adding it to the Tilemap Extras package.
+
+For issues with the Tilemap Extras please use the standard Unity channels via the Unity Bug Reporter and/or starting a thread in our forums instead of the GitHub Repository Issues tracker.
+
+Thank you for all your contributions over the years. As always, let us know about your needs and project plans and we will endeavor to make Tilemap Extras an even better tool for developing 2D games in Unity!
+
+
 # 2d-extras
 
 2d-extras is a repository containing helpful reusable scripts which you can use to make your games, with a slant towards 2D. Feel free to customise the behavior of the scripts to create new tools for your use case! 
@@ -31,11 +46,13 @@ The following line needs to be added to your `Packages/manifest.json` file in yo
 
 ### Tilemap
 
-For use with Unity `2019.2.0f1` onwards. 
+For use with Unity `2020.1.1f1` onwards. 
+
+Please use the `1.5.0-preview` tag for Unity 2019.2-2019.4 versions.
 
 Please use the `2019.1` tag for Unity 2019.1 versions. 
 
-Please use the `2018.3` branch or the `2018.3` tag for Unity 2018.3 versions. 
+Please use the `2018.3` branch or the `2018.3` tag for Unity 2018.3-2018.4 versions. 
 
 Please use the `2018.2` branch or the `2018.2` tag for Unity 2018.2 versions. 
 
@@ -46,7 +63,8 @@ Please use the `2017` branch or the `2017` tag for earlier versions of Unity (fr
 - **Coordinate**: This Brush displays the cell coordinates it is targeting in the SceneView. Use this as an example to create brushes which have extra visualization features when painting onto a Tilemap.
 - **Line**: This Brush helps draw lines of Tiles onto a Tilemap. The first click of the mouse sets the starting point of the line and the second click sets the ending point of the line and draws the lines of Tiles. Use this as an example to modify brush painting behaviour to making painting quicker with less actions.
 - **Random**: This Brush helps to place random Tiles onto a Tilemap. Use this as an example to create brushes which store specific data per brush and to make brushes which randomize behaviour.
-- **Prefab**: This Brush instances and places a randomly selected Prefabs onto the targeted location and parents the instanced object to the paint target. Use this as an example to quickly place an assorted type of GameObjects onto structured locations.
+- **Prefab**: This Brush instances and places the containing Prefab onto the targeted location and parents the instanced object to the paint target. Use this as an example to quickly place an assorted type of GameObjects onto structured locations.
+- **PrefabRandom**: This Brush instances and places a randomly selected Prefabs onto the targeted location and parents the instanced object to the paint target. Use this as an example to quickly place an assorted type of GameObjects onto structured locations.
 - **GameObject**: This Brush instances, places and manipulates GameObjects onto the scene. Use this as an example to create brushes which targets objects other than tiles for manipulation.
 - **TintBrush**: Brush to edit Tilemap per-cell tint colors.
 - **TintBrushSmooth**: Advanced tint brush for interpolated tint color per-cell. Requires the use of custom shader (see TintedTilemap.shader) and helper component TileTextureGenerator.
@@ -67,4 +85,7 @@ Please use the `2017` branch or the `2017` tag for earlier versions of Unity (fr
 ##### Other
 
 - **GridInformation**: A simple MonoBehaviour that stores and provides information based on Grid positions and keywords.
-- **Custom Rules for RuleTile**: This helps to create new custom Rules for the Rule Tile. Check the [Wiki](https://github.com/Unity-Technologies/2d-extras/wiki) for more information on how to use this.
+- **Custom Rules for RuleTile**: This helps to create new custom Rules for the Rule Tile. Check the [Wiki](https://github.com/Unity-Technologies/2d-extras/wiki) or this great [video](https://youtu.be/FwOxLkJTXag) for more information on how to use this!
+
+[![How to make Custom Rule Tiles in Unity Video](http://img.youtube.com/vi/FwOxLkJTXag/0.jpg)](http://www.youtube.com/watch?v=FwOxLkJTXag "How to make Custom Rule Tiles in Unity")
+
