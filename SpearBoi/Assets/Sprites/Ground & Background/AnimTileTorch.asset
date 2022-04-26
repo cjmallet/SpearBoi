@@ -12,7 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 13b75c95f34a00d4e8c04f76b73312e6, type: 3}
   m_Name: AnimTileTorch
   m_EditorClassIdentifier: 
-  m_AnimatedSprites: []
+  m_AnimatedSprites:
+  - {fileID: -9034126682784216062, guid: 2f758c96beda9af45a7ceb88116a123b, type: 3}
+  - {fileID: 2652299111340853424, guid: 2f758c96beda9af45a7ceb88116a123b, type: 3}
+  - {fileID: 3012022839504718586, guid: 2f758c96beda9af45a7ceb88116a123b, type: 3}
+  - {fileID: 1790882133243449769, guid: 2f758c96beda9af45a7ceb88116a123b, type: 3}
+  - {fileID: 7926827821874708208, guid: 2f758c96beda9af45a7ceb88116a123b, type: 3}
+  - {fileID: 197002663652443948, guid: 2f758c96beda9af45a7ceb88116a123b, type: 3}
   m_MinSpeed: 1
   m_MaxSpeed: 1
   m_AnimationStartTime: 0
