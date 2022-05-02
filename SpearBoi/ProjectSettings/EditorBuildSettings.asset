@@ -6,12 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/SampleScene.unity
-    guid: 2cda990e2423bbf4892e6590ba056729
+    path: Assets/Scenes/Levels/Turorial.unity
+    guid: c791febd497f4f54fb2cc2cfe2939520
   - enabled: 1
-    path: Assets/Scenes/TestChris.unity
-    guid: b330cf615126b44438f10a4218e6cf86
-  - enabled: 1
-    path: Assets/Scenes/spearboiCasper.unity
-    guid: a049a77c7856b3342883806e559b3120
+    path: Assets/Scenes/Levels/Level1.unity
+    guid: 9e140601e1ece0d468cf4a9b516befa3
   m_configObjects: {}

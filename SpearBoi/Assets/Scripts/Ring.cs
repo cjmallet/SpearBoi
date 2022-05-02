@@ -38,7 +38,10 @@ public class Ring : MonoBehaviour
     {
         if (collision.transform.CompareTag("Spear"))
         {
-            switchState();
+            if (collision.GetComponent<Spear>().thrown)
+            {
+                switchState();
+            }
         }
     }
 
