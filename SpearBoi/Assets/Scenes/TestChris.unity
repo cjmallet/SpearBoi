@@ -1923,7 +1923,7 @@ GameObject:
   - component: {fileID: 2130013908}
   - component: {fileID: 2130013906}
   - component: {fileID: 2130013907}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Spear
   m_TagString: Spear
   m_Icon: {fileID: 0}
@@ -2005,7 +2005,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 34ebd0b32a5c3fa4295eefe2209e72d5, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 589ea28f5a3e4ee469c4be61a358d1d8, type: 3}
   m_Color: {r: 0.8992443, g: 0.9622642, b: 0.17702031, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -2046,7 +2046,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 2.1957624
+  m_Radius: 2.36
 --- !u!68 &2130013908
 EdgeCollider2D:
   m_ObjectHideFlags: 0
@@ -2063,15 +2063,20 @@ EdgeCollider2D:
   m_Offset: {x: 0, y: 0}
   m_EdgeRadius: 0
   m_Points:
-  - {x: -1.1159807, y: -0.12065466}
+  - {x: -1.65357, y: -0.2055197}
+  - {x: -1.5596757, y: -0.21355003}
+  - {x: -1.5663067, y: -0.12942031}
   - {x: -0.9301339, y: -0.12348116}
-  - {x: 0.048724845, y: -0.11012998}
-  - {x: 0.5036565, y: -0.24082577}
-  - {x: 1.0878075, y: 0.0009961096}
-  - {x: 0.51509047, y: 0.21805447}
-  - {x: 0.038312614, y: 0.11423287}
-  - {x: -1.1169505, y: 0.124052785}
-  - {x: -1.1215942, y: -0.107312016}
+  - {x: 0.6402366, y: -0.1203015}
+  - {x: 1.0959729, y: -0.24348609}
+  - {x: 1.7343118, y: 0.0077269417}
+  - {x: 1.1074069, y: 0.21539415}
+  - {x: 0.6223132, y: 0.104865834}
+  - {x: -1.5824428, y: 0.12163328}
+  - {x: -1.5902029, y: 0.21671452}
+  - {x: -1.6736104, y: 0.21296263}
+  - {x: -1.670906, y: 0.1302019}
+  - {x: -1.6620872, y: -0.2192876}
   m_AdjacentStartPoint: {x: 0, y: 0}
   m_AdjacentEndPoint: {x: 0, y: 0}
   m_UseAdjacentStartPoint: 0
