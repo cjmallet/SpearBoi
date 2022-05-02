@@ -39,13 +39,9 @@ public class playerControler : MonoBehaviour
         {
             rb.velocity = Vector2.up * jumpHeight;
             extraJumps--;
-            Debug.Log("Extra Jump" + extraJumps);
-            Debug.Log(grounded);
-
         } else if (Input.GetButtonDown("Jump") && extraJumps == 0 && grounded == true)
         {
             rb.velocity = Vector2.up * jumpHeight;
-            Debug.Log("amount of Jumps" + extraJumps);
         }
     }
 

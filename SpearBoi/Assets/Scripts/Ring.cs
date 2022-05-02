@@ -31,7 +31,6 @@ public class Ring : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log("oets");
         if (collision.transform.CompareTag("Spear"))
         {
             ringActive = true;

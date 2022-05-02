@@ -10,6 +10,8 @@ public class Spear : MonoBehaviour
 
 
     private bool playerInRange;
+    private bool inThreadmill;
+
     private Rigidbody2D rb;
 
     // Start is called before the first frame update
@@ -63,7 +65,7 @@ public class Spear : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.transform.CompareTag("Stickable"))
+        if (collision.transform.CompareTag("Stickable")&&!inThreadmill)
         {
             rb.velocity = Vector2.zero;
             rb.constraints = RigidbodyConstraints2D.FreezeAll;

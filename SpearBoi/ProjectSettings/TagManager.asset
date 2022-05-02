@@ -9,11 +9,12 @@ TagManager:
   - PatrolPoint
   - Enemy
   - Ground
+  - Threadmill
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Threadmill
   - Water
   - UI
   - Ground
