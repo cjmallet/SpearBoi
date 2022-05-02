@@ -6,7 +6,7 @@ public class Ring : MonoBehaviour
 {
     // Start is called before the first frame update
     public bool ringActive;
-    [SerializeField] private Material myMaterial;
+
     SpriteRenderer switchSprite;
     [SerializeField]
     private GameObject door;
@@ -25,13 +25,10 @@ public class Ring : MonoBehaviour
     public virtual void Activate()
     {
         ringActive = true;
-        myMaterial.color = Color.green;
-
     }
     public virtual void Deactivate()
     {
         ringActive = false;
-        myMaterial.color = Color.red;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
