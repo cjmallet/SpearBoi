@@ -62,6 +62,12 @@ public class SpearThrowing : MonoBehaviour
 
         if (Input.GetKeyUp(KeyCode.Mouse0) && !spearThrown)
         {
+            Debug.Log(spear.transform.rotation);
+            if (spear.transform.rotation.z<-0.3f&&spear.transform.rotation.z>-1&&GetComponent<playerControler>().grounded)
+            {
+                spear.transform.position= new Vector3(spear.transform.position.x, spear.transform.position.y+4, spear.transform.position.z);
+            }
+
             spear.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.None;
             spear.GetComponent<Rigidbody2D>().velocity += lookRotation.normalized * throwingSpeed;
             spear.GetComponent<Spear>().thrown = true;

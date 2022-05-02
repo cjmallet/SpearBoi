@@ -11,7 +11,8 @@ public class playerControler : MonoBehaviour
     private Rigidbody2D rb;
     private bool facingRight = true;
 
-    private bool grounded;
+    [HideInInspector]
+    public bool grounded;
     public Transform groundCheck;
     public float checkRadius;
     public LayerMask whatIsGround;
