@@ -1,10 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class CoinManager : MonoBehaviour
 {
-    public int coinCounter;
+    [HideInInspector]
+    public int coinCount;
+
+    [SerializeField]
+    private TextMeshProUGUI coinCounter;
+
     public static CoinManager Instance { get; private set; }
     // Start is called before the first frame update
 
@@ -13,14 +19,9 @@ public class CoinManager : MonoBehaviour
         Instance = this;
     }
 
-    void Start()
+    public void UpdateCoinCounter(int value)
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        coinCount += value;
+        coinCounter.text = coinCount.ToString();
     }
 }
