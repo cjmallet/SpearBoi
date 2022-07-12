@@ -17,11 +17,8 @@ public class coin : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            Debug.Log("coin"); 
             Destroy(this.gameObject);
-            CoinManager.Instance.coinCounter += coinValue;
-
-           
+            CoinManager.Instance.UpdateCoinCounter(coinValue);
         }
     }
 }

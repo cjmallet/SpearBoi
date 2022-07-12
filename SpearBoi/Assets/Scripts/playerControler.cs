@@ -20,14 +20,12 @@ public class playerControler : MonoBehaviour
     public LayerMask whatIsGround;
     public LayerMask spearCheck;
     
-
     private int extraJumps;
     public int extraJumpsValue;
 
     // Start is called before the first frame update
     void Start()
     {
-        
         extraJumps = extraJumpsValue;
         grounded = true;
         rb = GetComponent<Rigidbody2D>();
@@ -38,13 +36,7 @@ public class playerControler : MonoBehaviour
     {
         if(grounded || (onSpear && spear.thrown))
         {
-            
-            extraJumps = extraJumpsValue;
-            Debug.Log("extraJumps" + extraJumps);
-        }
-
-        if(onSpear && spear.thrown)
-        {
+            Debug.Log(grounded+"grounded, "+onSpear+" Onspear");
             extraJumps = extraJumpsValue;
         }
 
@@ -59,16 +51,13 @@ public class playerControler : MonoBehaviour
             {
                 rb.velocity = Vector2.up * jumpHeight;
             }
-            
         }
     }
 
     private void FixedUpdate()
     {
-
         grounded = Physics2D.OverlapCircle(groundCheck.position, checkRadius, whatIsGround);
         onSpear = Physics2D.OverlapCircle(groundCheck.position, checkRadius, spearCheck);
-        Debug.Log(onSpear);
         //press left moveInput == -1, press right moveInput == 1
         moveInput = Input.GetAxis("Horizontal");
         rb.velocity = new Vector2(moveInput * movementSpeed, rb.velocity.y);
@@ -88,6 +77,5 @@ public class playerControler : MonoBehaviour
         Vector3 Scaler = transform.localScale;
         Scaler.x *= -1;
         transform.localScale = Scaler;
-
     }
 }
