@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class coin : MonoBehaviour
 {
+    public int coinValue;
     
     // Start is called before the first frame update
     void Start()
@@ -18,7 +19,7 @@ public class coin : MonoBehaviour
         {
             Debug.Log("coin"); 
             Destroy(this.gameObject);
-            CoinManager.Instance.coinCounter++;
+            CoinManager.Instance.coinCounter += coinValue;
 
            
         }

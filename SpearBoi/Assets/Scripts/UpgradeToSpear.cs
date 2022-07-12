@@ -10,6 +10,7 @@ public class UpgradeToSpear : MonoBehaviour
     public SpearThrowing spearThrowing;
     public GameObject spear;
     public GameObject arc;
+    public GameObject blockEntrance;
     // Start is called before the first frame update
     void Start()
     {
@@ -28,6 +29,7 @@ public class UpgradeToSpear : MonoBehaviour
             arc.SetActive(true);
             spearThrowing.ResetSpear();
             gameObject.SetActive(false);
+            blockEntrance.SetActive(true);
         }
     }
 
