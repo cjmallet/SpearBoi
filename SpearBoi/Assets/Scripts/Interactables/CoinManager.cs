@@ -17,10 +17,16 @@ public class CoinManager : MonoBehaviour
     private void Awake()
     {
         Instance = this;
+        coinCounter.gameObject.SetActive(false);
     }
 
     public void UpdateCoinCounter(int value)
     {
+        if (!coinCounter.gameObject.activeSelf)
+        {
+            coinCounter.gameObject.SetActive(true);
+        }
+
         coinCount += value;
         coinCounter.text = coinCount.ToString();
     }
