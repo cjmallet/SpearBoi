@@ -94,7 +94,7 @@ public class SpearThrowing : MonoBehaviour
         }
     }
 
-    private void ResetSpear()
+    public void ResetSpear()
     {
         spear.GetComponent<EdgeCollider2D>().isTrigger = true;
         spear.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeAll;

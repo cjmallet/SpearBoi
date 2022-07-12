@@ -25,6 +25,7 @@ public class Ring : MonoBehaviour
     public virtual void Activate()
     {
         ringActive = true;
+        GetComponent<SpriteRenderer>().color = Color.green;
     }
     public virtual void Deactivate()
     {

@@ -7,15 +7,19 @@ public class playerControler : MonoBehaviour
     [SerializeField] private int movementSpeed;
     [SerializeField] private int jumpHeight;
     private float moveInput;
+    public Spear spear;
 
     private Rigidbody2D rb;
     private bool facingRight = true;
 
     [HideInInspector]
     public bool grounded;
+    public bool onSpear;
     public Transform groundCheck;
     public float checkRadius;
     public LayerMask whatIsGround;
+    public LayerMask spearCheck;
+    
 
     private int extraJumps;
     public int extraJumpsValue;
@@ -23,6 +27,7 @@ public class playerControler : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        
         extraJumps = extraJumpsValue;
         grounded = true;
         rb = GetComponent<Rigidbody2D>();
@@ -31,7 +36,14 @@ public class playerControler : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(grounded == true)
+        if(grounded || (onSpear && spear.thrown))
+        {
+            
+            extraJumps = extraJumpsValue;
+            Debug.Log("extraJumps" + extraJumps);
+        }
+
+        if(onSpear && spear.thrown)
         {
             extraJumps = extraJumpsValue;
         }
@@ -40,9 +52,14 @@ public class playerControler : MonoBehaviour
         {
             rb.velocity = Vector2.up * jumpHeight;
             extraJumps--;
-        } else if (Input.GetButtonDown("Jump") && extraJumps == 0 && grounded == true)
+
+        } else if (Input.GetButtonDown("Jump") && extraJumps == 0 && grounded)
         {
-            rb.velocity = Vector2.up * jumpHeight;
+            if (spear.thrown)
+            {
+                rb.velocity = Vector2.up * jumpHeight;
+            }
+            
         }
     }
 
@@ -50,6 +67,8 @@ public class playerControler : MonoBehaviour
     {
 
         grounded = Physics2D.OverlapCircle(groundCheck.position, checkRadius, whatIsGround);
+        onSpear = Physics2D.OverlapCircle(groundCheck.position, checkRadius, spearCheck);
+        Debug.Log(onSpear);
         //press left moveInput == -1, press right moveInput == 1
         moveInput = Input.GetAxis("Horizontal");
         rb.velocity = new Vector2(moveInput * movementSpeed, rb.velocity.y);
