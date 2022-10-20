@@ -18,10 +18,6 @@ public class Ring : MonoBehaviour
         Deactivate();
     }
 
-    public void Update()
-    {
-        
-    }
     public virtual void Activate()
     {
         ringActive = true;
