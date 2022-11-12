@@ -20,8 +20,12 @@ public class UpgradeToSpear : MonoBehaviour
         scene = SceneManager.GetActiveScene().name;
         if (scene == "Tutorial")
         {
-            spear.SetActive(false);
-            arc.SetActive(false);
+
+            
+        }
+        else (){
+            spear.SetActive(true);
+            earc.SetActive(true);
         }
         
         transform = gameObject.GetComponent<Transform>();

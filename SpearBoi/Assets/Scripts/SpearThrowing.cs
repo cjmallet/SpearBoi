@@ -26,7 +26,7 @@ public class SpearThrowing : MonoBehaviour
         for (int x=0; x<arcPoints.Length;x++)
         {
             arcPoints[x] = Instantiate(arcPoint, spear.transform.position,Quaternion.identity,arcHolderObject.transform);
-            arcPoints[x].SetActive(false);
+            //arcPoints[x].SetActive(false);
         }
         
         spearHeldPosition = transform.GetChild(1).transform.localPosition;
