@@ -88,14 +88,6 @@ public class Spear : MonoBehaviour
         }
     }
 
-   /* private void OnTriggerEnter2D(Collider2D other)
-    {
-        if (other.transform.tag == "Coin")
-        {
-            Destroy(other.gameObject);
-        }
-    }*/
-
     public void ResetSpear()
     {
         hasHit = false;

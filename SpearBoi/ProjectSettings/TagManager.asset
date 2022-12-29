@@ -11,6 +11,7 @@ TagManager:
   - Ground
   - Threadmill
   - Coin
+  - AddSpear
   layers:
   - Default
   - TransparentFX
@@ -21,8 +22,8 @@ TagManager:
   - Ground
   - Spear
   - StickableGround
-  - 
-  - 
+  - Enemy
+  - Projectiles
   - 
   - 
   - 

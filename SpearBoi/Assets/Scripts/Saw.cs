@@ -1,0 +1,47 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.SceneManagement;
+
+public class Saw : MonoBehaviour
+{
+    [SerializeField] private int moveSpeed;
+    [HideInInspector] public ShootDirection shootDirection;
+
+    // Update is called once per frame
+    void FixedUpdate()
+    {
+        switch (shootDirection)
+        {
+            case ShootDirection.UP:
+                transform.position = new Vector2(transform.position.x, transform.position.y + (moveSpeed * Time.deltaTime));
+                break;
+            case ShootDirection.RIGHT:
+                transform.position = new Vector2(transform.position.x + (moveSpeed * Time.deltaTime), transform.position.y);
+                break;
+            case ShootDirection.DOWN:
+                transform.position = new Vector2(transform.position.x, transform.position.y - (moveSpeed * Time.deltaTime));
+                break;
+            case ShootDirection.LEFT:
+                transform.position = new Vector2(transform.position.x - (moveSpeed * Time.deltaTime), transform.position.y);
+                break;
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.transform.CompareTag("Player"))
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        }
+        Destroy(transform.gameObject);
+    }
+
+    public enum ShootDirection
+    {
+        UP,
+        RIGHT,
+        DOWN,
+        LEFT
+    }
+}

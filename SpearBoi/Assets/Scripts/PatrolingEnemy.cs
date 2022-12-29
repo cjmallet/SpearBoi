@@ -7,6 +7,8 @@ public class PatrolingEnemy : MonoBehaviour
 {
     [SerializeField] private int movementSpeed;
     [SerializeField] private MoveState moveState;
+    [SerializeField] private GameObject[] patrolPoints;
+    [SerializeField] private bool immortal;
 
     // Update is called once per frame
     void Update()
@@ -55,7 +57,10 @@ public class PatrolingEnemy : MonoBehaviour
 
     public void Die()
     {
-        Destroy(transform.parent.gameObject);
+        if (!immortal)
+        {
+            Destroy(transform.parent.gameObject);
+        }
     }
 
     private enum MoveState
