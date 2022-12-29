@@ -6,26 +6,17 @@ using UnityEngine.SceneManagement;
 public class PatrolingEnemy : MonoBehaviour
 {
     [SerializeField] private int movementSpeed;
-
-    private Transform patrolPoint1, patrolPoint2;
-    private float timer;
-    private int state, waitTime;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        state = 1;
-    }
+    [SerializeField] private MoveState moveState;
 
     // Update is called once per frame
     void Update()
     {
-        if (state==1)
+        if (moveState == MoveState.LEFT)
         {
             transform.position = new Vector2(transform.position.x-(movementSpeed*Time.deltaTime), transform.position.y);
         }
 
-        if (state==2)
+        if (moveState == MoveState.RIGHT)
         {
             transform.position = new Vector2(transform.position.x + (movementSpeed * Time.deltaTime), transform.position.y);
         }
@@ -33,15 +24,15 @@ public class PatrolingEnemy : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("PatrolPoint") && (state == 1 && collision.name.Contains("Left") || state == 2 && collision.name.Contains("Right")))
+        if (collision.CompareTag("PatrolPoint") && (moveState == MoveState.LEFT && collision.name.Contains("Left") || moveState == MoveState.RIGHT && collision.name.Contains("Right")))
         {
-            if (state == 1)
+            if (moveState == MoveState.LEFT)
             {
-                state = 2;
+                moveState = MoveState.RIGHT;
             }
-            else if (state== 2)
+            else if (moveState == MoveState.RIGHT)
             {
-                state = 1;
+                moveState = MoveState.LEFT;
             }
         }
     }
@@ -64,6 +55,12 @@ public class PatrolingEnemy : MonoBehaviour
 
     public void Die()
     {
-        Destroy(transform.gameObject);
+        Destroy(transform.parent.gameObject);
+    }
+
+    private enum MoveState
+    {
+        LEFT,
+        RIGHT
     }
 }
