@@ -48,8 +48,9 @@ public class timedRing : MonoBehaviour
 
     void ActivateRing()
     {
-        if (timerOn)
+        if (timerOn  == true)
         {
+            Debug.Log("ring activated");
             fire.Play();
         }
     }

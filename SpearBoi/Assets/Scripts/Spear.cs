@@ -7,7 +7,7 @@ public class Spear : MonoBehaviour
     [HideInInspector] public bool thrown;
     [HideInInspector] public bool hasHit;
     public GameObject buttonPrompt;
-
+    public bool magnoSpearOn;
 
     private bool playerInRange;
     private bool inThreadmill;

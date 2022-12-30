@@ -10,6 +10,8 @@ public class SpearThrowing : MonoBehaviour
     [SerializeField] private int throwingSpeed;
     [SerializeField] private int amountOfArcPoints;
 
+    public bool magnoSpear;
+
     private GameObject[] arcPoints;
     private GameObject spear;
     private GameObject spearHolder;
@@ -46,7 +48,7 @@ public class SpearThrowing : MonoBehaviour
             spear.transform.localScale = Vector3.one;
         }
 
-        if (Input.GetKey(KeyCode.E) && buttonPrompt.activeSelf)
+        if (Input.GetKey(KeyCode.E) && (buttonPrompt.activeSelf || magnoSpear == true))
         {
             ResetSpear();
         }

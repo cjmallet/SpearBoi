@@ -12,22 +12,10 @@ public class UpgradeToSpear : MonoBehaviour
     public GameObject spear;
     public GameObject arc;
     public GameObject blockEntrance;
-    public string scene;
     // Start is called before the first frame update
     void Start()
     {
         SpriteRenderer spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
-        scene = SceneManager.GetActiveScene().name;
-        if (scene == "Tutorial")
-        {
-
-            
-        }
-        else (){
-            spear.SetActive(true);
-            earc.SetActive(true);
-        }
-        
         transform = gameObject.GetComponent<Transform>();
     }
 
@@ -40,6 +28,7 @@ public class UpgradeToSpear : MonoBehaviour
             spearThrowing.ResetSpear();
             gameObject.SetActive(false);
             blockEntrance.SetActive(true);
+            Debug.Log("upgrade to spear");
         }
     }
 

@@ -60,7 +60,7 @@ GameObject:
   - component: {fileID: 656794506343508790}
   - component: {fileID: 656794506343508791}
   - component: {fileID: 656794506343508788}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Enemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -145,6 +145,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movementSpeed: 2
+  state: 0
 --- !u!61 &656794506343508791
 BoxCollider2D:
   m_ObjectHideFlags: 0

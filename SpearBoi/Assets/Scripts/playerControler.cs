@@ -34,9 +34,10 @@ public class playerControler : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //Debug.Log(onSpear);
         if(grounded || (onSpear && spear.thrown))
         {
-            Debug.Log(grounded+"grounded, "+onSpear+" Onspear");
+            //Debug.Log(grounded+"grounded, "+onSpear+" Onspear");
             extraJumps = extraJumpsValue;
         }
 

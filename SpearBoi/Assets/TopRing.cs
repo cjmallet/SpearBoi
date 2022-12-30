@@ -2,15 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Ring : MonoBehaviour
+public class TopRing : MonoBehaviour
 {
     // Start is called before the first frame update
     public bool ringActive;
-
-    SpriteRenderer switchSprite;
     [SerializeField]
     private GameObject door;
-    private GameObject blocker;
+
 
 
     public void Start()
@@ -42,19 +40,17 @@ public class Ring : MonoBehaviour
 
     public void switchState()
     {
-        
+
         if (ringActive == false)
         {
             Activate();
-            door.GetComponent<SpriteRenderer>().sprite = door.GetComponent<DoorScript>().doorOpen.GetComponent<SpriteRenderer>().sprite;
-            door.GetComponent<BoxCollider2D>().enabled = false;
+            door.SetActive(false);
             ringActive = !ringActive;
         }
         else if (ringActive == true)
         {
             Deactivate();
-            door.GetComponent<SpriteRenderer>().sprite = door.GetComponent<DoorScript>().doorClosed.GetComponent<SpriteRenderer>().sprite;
-            door.GetComponent<BoxCollider2D>().enabled = true;
+            door.SetActive(true);
             ringActive = !ringActive;
 
         }
