@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class PatrolingEnemy : MonoBehaviour
 {
     [SerializeField] private int movementSpeed;
+    [SerializeField] private playerControler playercontroller;
 
     private Transform patrolPoint1, patrolPoint2;
     private float timer;
@@ -58,7 +59,7 @@ public class PatrolingEnemy : MonoBehaviour
 
         if (collision.transform.CompareTag("Player"))
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            playercontroller.currentHealth--;
         }
     }
 

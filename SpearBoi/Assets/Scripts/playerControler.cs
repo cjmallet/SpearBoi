@@ -1,16 +1,23 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
+using UnityEngine.SceneManagement;
 
 public class playerControler : MonoBehaviour
 {
     [SerializeField] private int movementSpeed;
     [SerializeField] private int jumpHeight;
+    [SerializeField]
+    private TextMeshProUGUI healthCounter;
     private float moveInput;
     public Spear spear;
+    public int currentHealth;
+    
 
     private Rigidbody2D rb;
     private bool facingRight = true;
+
 
     [HideInInspector]
     public bool grounded;
@@ -19,6 +26,10 @@ public class playerControler : MonoBehaviour
     public float checkRadius;
     public LayerMask whatIsGround;
     public LayerMask spearCheck;
+    public Scene currentScene;
+
+    private float cayoteTimerCounter;
+    private float cayoteTime = 0.2f;
     
     private int extraJumps;
     public int extraJumpsValue;
@@ -34,11 +45,17 @@ public class playerControler : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        currentScene = SceneManager.GetActiveScene();
         //Debug.Log(onSpear);
         if(grounded || (onSpear && spear.thrown))
         {
             //Debug.Log(grounded+"grounded, "+onSpear+" Onspear");
             extraJumps = extraJumpsValue;
+            cayoteTimerCounter = cayoteTime;
+        }
+        else
+        {
+            cayoteTimerCounter -= Time.deltaTime;
         }
 
         if (Input.GetButtonDown("Jump") && extraJumps > 0)
@@ -46,13 +63,21 @@ public class playerControler : MonoBehaviour
             rb.velocity = Vector2.up * jumpHeight;
             extraJumps--;
 
-        } else if (Input.GetButtonDown("Jump") && extraJumps == 0 && grounded)
+        } else if (Input.GetButtonDown("Jump") && extraJumps == 0 && cayoteTimerCounter > 0f)
         {
             if (spear.thrown)
             {
                 rb.velocity = Vector2.up * jumpHeight;
             }
         }
+
+        healthCounter.text = currentHealth.ToString();
+
+        if (currentHealth == 0)
+        {
+            SceneManager.LoadScene(currentScene.name);
+        }
+
     }
 
     private void FixedUpdate()
