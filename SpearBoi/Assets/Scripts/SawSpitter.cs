@@ -16,7 +16,7 @@ public class SawSpitter : MonoBehaviour
         timer += Time.deltaTime;
         if (timer >= shootTimer)
         {
-            GameObject spawnedSaw = Instantiate(saw, transform);
+            GameObject spawnedSaw = Instantiate(saw, transform.position, transform.parent.rotation);
             spawnedSaw.GetComponent<Saw>().shootDirection = shootDirection;
             timer = 0;
         }

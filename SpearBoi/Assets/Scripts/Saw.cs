@@ -5,8 +5,15 @@ using UnityEngine.SceneManagement;
 
 public class Saw : MonoBehaviour
 {
+    [SerializeField] private float moveSpeedBoss;
     [SerializeField] private int moveSpeed;
     [HideInInspector] public ShootDirection shootDirection;
+    private GameObject player;
+
+    private void Start()
+    {
+        player = GameObject.Find("Player");
+    }
 
     // Update is called once per frame
     void FixedUpdate()
@@ -25,6 +32,9 @@ public class Saw : MonoBehaviour
             case ShootDirection.LEFT:
                 transform.position = new Vector2(transform.position.x - (moveSpeed * Time.deltaTime), transform.position.y);
                 break;
+            case ShootDirection.BOSSSPRAY:
+                transform.position += -transform.up * moveSpeed * Time.deltaTime;
+                break;
         }
     }
 
@@ -39,7 +49,13 @@ public class Saw : MonoBehaviour
         {
             return;
         }
-        Destroy(transform.gameObject);
+
+        if (collision.gameObject.CompareTag("Spear"))
+        {
+            return;
+        }
+
+        Destroy(this.gameObject);
     }
 
     public enum ShootDirection
@@ -47,6 +63,7 @@ public class Saw : MonoBehaviour
         UP,
         RIGHT,
         DOWN,
-        LEFT
+        LEFT,
+        BOSSSPRAY
     }
 }
