@@ -14,6 +14,13 @@ public class LevelManager : MonoBehaviour
 
     private Text coinCounter, timeCounter, fullScore;
 
+    public static LevelManager Instance { get; private set; }
+
+    private void Awake()
+    {
+        Instance = this;
+    }
+
     private void Start()
     {
         endLevelScreen.SetActive(true);
@@ -31,8 +38,8 @@ public class LevelManager : MonoBehaviour
         int coinScore = coins * 10;
         coinCounter.text = "Coins: "+coins+" x 10 = "+ coinScore;
 
-        int timeScore = 0 * - 10;
-        timeCounter.text = "Time: 0 x -10 = "+timeScore;
+        int timeScore = TimeManager.Instance.timeLeft * + 10;
+        timeCounter.text = "Time: "+ TimeManager.Instance.timeLeft + " x 10 = "+timeScore;
 
         fullScore.text = "Final Score: "+ coinScore +" + "+ timeScore+" = "+(coinScore+timeScore);
     }

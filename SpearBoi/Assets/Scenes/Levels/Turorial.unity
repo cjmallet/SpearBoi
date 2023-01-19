@@ -337,17 +337,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2c76d8fdb7c87ad43b6a41714c69bb78, type: 3}
---- !u!114 &118032928 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2591486781651809337, guid: 019b26a8b5465b24eb2a44239c5a2413, type: 3}
-  m_PrefabInstance: {fileID: 1389268767}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &275310987 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3173019736618093065, guid: 5d98dd588337d874b8c20c0cea199d15, type: 3}
@@ -28881,10 +28870,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1990487763795663825, guid: 019b26a8b5465b24eb2a44239c5a2413, type: 3}
-      propertyPath: coinCounter
-      value: 
-      objectReference: {fileID: 118032928}
     - target: {fileID: 1990487764241647824, guid: 019b26a8b5465b24eb2a44239c5a2413, type: 3}
       propertyPath: m_Name
       value: CoinCanvas
@@ -28893,14 +28878,6 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 1649191651}
-    - target: {fileID: 1990487764241647827, guid: 019b26a8b5465b24eb2a44239c5a2413, type: 3}
-      propertyPath: m_RenderMode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1990487764241647827, guid: 019b26a8b5465b24eb2a44239c5a2413, type: 3}
-      propertyPath: m_SortingLayerID
-      value: -161942263
-      objectReference: {fileID: 0}
     - target: {fileID: 1990487764241647828, guid: 019b26a8b5465b24eb2a44239c5a2413, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -28984,14 +28961,6 @@ PrefabInstance:
     - target: {fileID: 1990487764241647828, guid: 019b26a8b5465b24eb2a44239c5a2413, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2591486781651809337, guid: 019b26a8b5465b24eb2a44239c5a2413, type: 3}
-      propertyPath: m_text
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2591486781651809337, guid: 019b26a8b5465b24eb2a44239c5a2413, type: 3}
-      propertyPath: m_fontSize
-      value: 72
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 019b26a8b5465b24eb2a44239c5a2413, type: 3}
