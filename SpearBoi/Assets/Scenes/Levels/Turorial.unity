@@ -29564,6 +29564,18 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
+    - target: {fileID: 7592535523099419307, guid: 9b6c8b2ab2e4d234699a42fb6de199f7, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 1221.71
+      objectReference: {fileID: 0}
+    - target: {fileID: 7592535523099419307, guid: 9b6c8b2ab2e4d234699a42fb6de199f7, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0.000066757
+      objectReference: {fileID: 0}
+    - target: {fileID: 7592535523099419307, guid: 9b6c8b2ab2e4d234699a42fb6de199f7, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -181
+      objectReference: {fileID: 0}
     - target: {fileID: 7592535523801732466, guid: 9b6c8b2ab2e4d234699a42fb6de199f7, type: 3}
       propertyPath: m_Name
       value: LevelCompletedCanvas

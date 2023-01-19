@@ -34,6 +34,11 @@ public class Saw : MonoBehaviour
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
+
+        if (collision.transform.CompareTag("Coin"))
+        {
+            return;
+        }
         Destroy(transform.gameObject);
     }
 
