@@ -28,7 +28,6 @@ public class Spear : MonoBehaviour
             TrackMovement();
         }
 
-        Debug.Log(playerInRange+"   "+ hasHit);
         if (playerInRange && hasHit)
         {
             Debug.Log("true");

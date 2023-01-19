@@ -12,6 +12,7 @@ TagManager:
   - Threadmill
   - Coin
   - AddSpear
+  - Boss
   layers:
   - Default
   - TransparentFX

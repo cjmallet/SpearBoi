@@ -4,20 +4,19 @@ using UnityEngine;
 
 public class BossSwitch : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [SerializeField]
+    private GameObject spearSpawnPoint;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    [SerializeField]
+    private GameObject leverCage;
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        BossManager.Instance.TakeDamage();
+        if (collision.transform.CompareTag("Spear"))
+        {
+            collision.transform.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.None;
+            collision.transform.position = spearSpawnPoint.transform.position;
+            Destroy(leverCage);
+        }
     }
 }

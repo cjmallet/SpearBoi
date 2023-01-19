@@ -67,6 +67,7 @@ public class BossManager : MonoBehaviour
     public void TakeDamage()
     {
         health--;
+        Debug.Log("Damage");
         if (health==0)
         {
             GetDestroyed();
