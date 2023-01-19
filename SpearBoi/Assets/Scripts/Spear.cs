@@ -28,8 +28,10 @@ public class Spear : MonoBehaviour
             TrackMovement();
         }
 
+        Debug.Log(playerInRange+"   "+ hasHit);
         if (playerInRange && hasHit)
         {
+            Debug.Log("true");
             buttonPrompt.transform.position = new Vector2(transform.position.x, transform.position.y+2);
             buttonPrompt.SetActive(true);
         }

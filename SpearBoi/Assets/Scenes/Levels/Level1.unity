@@ -11981,6 +11981,10 @@ PrefabInstance:
       propertyPath: m_WasSpriteAssigned
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6095501103130206835, guid: 2c76d8fdb7c87ad43b6a41714c69bb78, type: 3}
+      propertyPath: buttonPrompt
+      value: 
+      objectReference: {fileID: 1239430677}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2c76d8fdb7c87ad43b6a41714c69bb78, type: 3}
 --- !u!4 &388913802 stripped
@@ -12518,7 +12522,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 54009298092610502, guid: bed989788aaa63243b98dd1fff670ab0, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bed989788aaa63243b98dd1fff670ab0, type: 3}
