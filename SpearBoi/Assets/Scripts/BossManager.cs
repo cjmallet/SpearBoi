@@ -31,8 +31,18 @@ public class BossManager : MonoBehaviour
 
     }
 
+    private void ResetToBase()
+    {
+        leftArm.transform.rotation = Quaternion.Euler(Vector3.zero);
+        rightArm.transform.rotation = Quaternion.Euler(Vector3.zero);
+        leftArm.transform.GetChild(0).GetComponent<SawSpitter>().shootTimer = 1f;
+        rightArm.transform.GetChild(0).GetComponent<SawSpitter>().shootTimer = 1f;
+    }
+
     private IEnumerator SprayAttack()
     {
+        leftArm.transform.GetChild(0).GetComponent<SawSpitter>().shootTimer = 0.3f;
+        rightArm.transform.GetChild(0).GetComponent<SawSpitter>().shootTimer = 0.3f;
         RotateArm(20);
         yield return new WaitForSeconds(0.3f);
         RotateArm(20);
@@ -42,6 +52,8 @@ public class BossManager : MonoBehaviour
         RotateArm(20);
         yield return new WaitForSeconds(0.3f);
         RotateArm(20);
+        yield return new WaitForSeconds(0.3f);
+        ResetToBase();
     }
 
     private void RotateArm(int rotateSpeed)

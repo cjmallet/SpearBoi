@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SawSpitter : MonoBehaviour
 {
-    [SerializeField] private float shootTimer;
+    public float shootTimer;
     [SerializeField] private Saw.ShootDirection shootDirection;
     [SerializeField] private GameObject saw;
 
