@@ -10,6 +10,9 @@ public class BossLever : MonoBehaviour
     [SerializeField]
     private GameObject bomb;
 
+    [SerializeField]
+    private Sprite buttonOn;
+
     private bool playerInRange;
     private bool destroyed;
 
@@ -19,6 +22,8 @@ public class BossLever : MonoBehaviour
         if (playerInRange && Input.GetKeyDown(KeyCode.E) &&!destroyed)
         {
             Destroy(nickolasCage);
+            Destroy(transform.GetChild(0).gameObject);
+            GetComponent<SpriteRenderer>().sprite = buttonOn;
             bomb.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.None;
             bomb.GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0.001f);
             destroyed = true;

@@ -10,12 +10,13 @@ public class BossSwitch : MonoBehaviour
     [SerializeField]
     private GameObject leverCage;
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.transform.CompareTag("Spear"))
         {
             collision.transform.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.None;
             collision.transform.position = spearSpawnPoint.transform.position;
+            collision.transform.rotation = Quaternion.Euler(0,0,-90);
             Destroy(leverCage);
         }
     }

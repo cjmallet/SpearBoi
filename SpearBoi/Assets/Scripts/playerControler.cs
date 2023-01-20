@@ -36,7 +36,6 @@ public class playerControler : MonoBehaviour
     {
         if(grounded || (onSpear && spear.thrown))
         {
-            Debug.Log(grounded+"grounded, "+onSpear+" Onspear");
             extraJumps = extraJumpsValue;
         }
 

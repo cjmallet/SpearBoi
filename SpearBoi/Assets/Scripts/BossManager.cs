@@ -81,37 +81,33 @@ public class BossManager : MonoBehaviour
 
     public void TakeDamage(Direction side)
     {
-        health--;
-
         switch (side)
         {
             case Direction.LEFT:
                 Destroy(leftArmor);
+                health--;
                 break;
             case Direction.RIGHT:
                 Destroy(rightArmor);
+                health--;
                 break;
             case Direction.DOWN:
-                Destroy(this.gameObject);
+                if (health==1)
+                {
+                    GetDestroyed();
+                }
                 break;
         }
 
         if (health==1)
         {
             GetComponent<BoxCollider2D>().enabled = true;
-            rightArm.GetComponent<BoxCollider2D>().enabled = true;
-            leftArm.GetComponent<BoxCollider2D>().enabled = true;
-        }
-
-        if (health == 0)
-        {
-            GetDestroyed();
         }
     }
 
     private void GetDestroyed()
     {
-
+        Destroy(this.gameObject);
     }
 
     public enum Direction{
