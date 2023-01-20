@@ -18,12 +18,27 @@ public class HomingSaw : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Player"))
+        if (collision.transform.CompareTag("Player"))
         {
             LevelManager.Instance.Retry();
         }
 
+        if (collision.transform.CompareTag("Coin"))
+        {
+            return;
+        }
+
         if (collision.gameObject.CompareTag("Spear"))
+        {
+            return;
+        }
+
+        if (collision.gameObject.CompareTag("AddSpear"))
+        {
+            return;
+        }
+
+        if (collision.gameObject.name.Equals("RightArm")|| collision.gameObject.name.Equals("LeftArm"))
         {
             return;
         }

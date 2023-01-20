@@ -55,6 +55,11 @@ public class Saw : MonoBehaviour
             return;
         }
 
+        if (collision.gameObject.CompareTag("AddSpear"))
+        {
+            return;
+        }
+
         Destroy(this.gameObject);
     }
 

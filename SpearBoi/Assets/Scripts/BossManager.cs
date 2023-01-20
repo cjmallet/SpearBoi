@@ -7,12 +7,13 @@ public class BossManager : MonoBehaviour
     public static BossManager Instance { get; private set; }
 
     [SerializeField]
-    private GameObject saw, homingSaw, player;
+    private GameObject saw, homingSaw;
 
     [SerializeField]
     private int health = 3;
 
     private GameObject leftArmor, rightArmor, leftArm, rightArm;
+    private SawSpitter leftSpitter, rightSpitter;
 
     private void Awake()
     {
@@ -22,7 +23,9 @@ public class BossManager : MonoBehaviour
 
         leftArmor = transform.GetChild(2).gameObject;
         rightArmor = transform.GetChild(3).gameObject;
-        StartCoroutine("SprayAttack");
+
+        leftSpitter = leftArm.transform.GetChild(0).GetComponent<SawSpitter>();
+        rightSpitter = rightArm.transform.GetChild(0).GetComponent<SawSpitter>();
     }
 
     // Update is called once per frame
@@ -35,48 +38,66 @@ public class BossManager : MonoBehaviour
     {
         leftArm.transform.rotation = Quaternion.Euler(Vector3.zero);
         rightArm.transform.rotation = Quaternion.Euler(Vector3.zero);
-        leftArm.transform.GetChild(0).GetComponent<SawSpitter>().shootTimer = 1f;
-        rightArm.transform.GetChild(0).GetComponent<SawSpitter>().shootTimer = 1f;
+        leftSpitter.shootTimer = 1f;
+        rightSpitter.shootTimer = 1f;
+        leftSpitter.saw = saw;
+        rightSpitter.saw = saw;
+        leftSpitter.shotgunMode = false;
+        rightSpitter.shotgunMode = false;
     }
 
     private IEnumerator SprayAttack()
     {
-        leftArm.transform.GetChild(0).GetComponent<SawSpitter>().shootTimer = 0.3f;
-        rightArm.transform.GetChild(0).GetComponent<SawSpitter>().shootTimer = 0.3f;
-        RotateArm(20);
+        leftSpitter.shootTimer = 0.3f;
+        rightSpitter.shootTimer = 0.3f;
+        RotateArms(-10);
         yield return new WaitForSeconds(0.3f);
-        RotateArm(20);
+        RotateArms(25);
         yield return new WaitForSeconds(0.3f);
-        RotateArm(20);
+        RotateArms(25);
         yield return new WaitForSeconds(0.3f);
-        RotateArm(20);
+        RotateArms(40);
         yield return new WaitForSeconds(0.3f);
-        RotateArm(20);
+        RotateArms(20);
         yield return new WaitForSeconds(0.3f);
         ResetToBase();
     }
 
-    private void RotateArm(int rotateSpeed)
+    private void RotateArms(int rotateSpeed)
     {
         leftArm.transform.Rotate(new Vector3(0, 0, -rotateSpeed));
         rightArm.transform.Rotate(new Vector3(0, 0, rotateSpeed));
     }
 
-    private IEnumerator LaserAttack()
+    private IEnumerator HomingAttack()
     {
-        leftArm.transform.rotation = (new Quaternion(0, 0, Mathf.Lerp(0, -100, 20), 0));
-        leftArm.transform.rotation = (new Quaternion(0, 0, Mathf.Lerp(0, 100, 20), 0));
+        RotateArms(90);
+        leftSpitter.shootTimer = 20f;
+        rightSpitter.shootTimer = 20f;
         yield return new WaitForSeconds(1f);
+        leftSpitter.shootTimer = 0.3f;
+        rightSpitter.shootTimer = 0.3f;
+        leftSpitter.saw = homingSaw;
+        rightSpitter.saw = homingSaw;
+        yield return new WaitForSeconds(0.3f);
+        leftSpitter.shootTimer = 20f;
+        rightSpitter.shootTimer = 20f;
+        yield return new WaitForSeconds(1f);
+        ResetToBase();
     }
 
-    private void HomingAttack()
+    private IEnumerator ShotgunBlast()
     {
-
-    }
-
-    private void ShotgunBlast()
-    {
-
+        RotateArms(50);
+        leftSpitter.shootTimer = 20f;
+        rightSpitter.shootTimer = 20f;
+        yield return new WaitForSeconds(1f);
+        leftSpitter.shotgunMode = true;
+        rightSpitter.shotgunMode = true;
+        leftSpitter.shootTimer = 0.5f;
+        rightSpitter.shootTimer = 0.5f;
+        yield return new WaitForSeconds(1f);
+        ResetToBase();
     }
 
     public void TakeDamage(Direction side)
