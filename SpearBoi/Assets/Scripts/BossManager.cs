@@ -7,13 +7,18 @@ public class BossManager : MonoBehaviour
     public static BossManager Instance { get; private set; }
 
     [SerializeField]
-    private GameObject saw, homingSaw;
+    private GameObject saw, homingSaw, doorBlockade;
 
     [SerializeField]
     private int health = 3;
 
+    [SerializeField]
+    private float attackTimer;
+
     private GameObject leftArmor, rightArmor, leftArm, rightArm;
     private SawSpitter leftSpitter, rightSpitter;
+    private float timer;
+    private bool canAttack, leftDestroyed,rightDestroyed;
 
     private void Awake()
     {
@@ -26,28 +31,60 @@ public class BossManager : MonoBehaviour
 
         leftSpitter = leftArm.transform.GetChild(0).GetComponent<SawSpitter>();
         rightSpitter = rightArm.transform.GetChild(0).GetComponent<SawSpitter>();
+
+        ResetToBase();
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
+        if (canAttack)
+        {
+            timer += Time.deltaTime;
 
+            if (timer > attackTimer)
+            {
+                int chooseAttack = Random.Range(0,8);
+                switch (chooseAttack)
+                {
+                    case 0:
+                    case 1:
+                    case 2:
+                    case 3:
+                        StartCoroutine("SprayAttack");
+                        break;
+
+                    case 4:
+                    case 5:
+                    case 6:
+                        StartCoroutine("ShotgunBlast");
+                        break;
+
+                    case 7:
+                        StartCoroutine("HomingAttack");
+                        break;
+                }
+            }
+        }
     }
 
     private void ResetToBase()
     {
         leftArm.transform.rotation = Quaternion.Euler(Vector3.zero);
         rightArm.transform.rotation = Quaternion.Euler(Vector3.zero);
-        leftSpitter.shootTimer = 1f;
-        rightSpitter.shootTimer = 1f;
+        leftSpitter.shootTimer = 2f;
+        rightSpitter.shootTimer = 2f;
         leftSpitter.saw = saw;
         rightSpitter.saw = saw;
         leftSpitter.shotgunMode = false;
         rightSpitter.shotgunMode = false;
+        timer = 0;
+        canAttack = true;
     }
 
     private IEnumerator SprayAttack()
     {
+        canAttack = false;
         leftSpitter.shootTimer = 0.3f;
         rightSpitter.shootTimer = 0.3f;
         RotateArms(-10);
@@ -71,6 +108,7 @@ public class BossManager : MonoBehaviour
 
     private IEnumerator HomingAttack()
     {
+        canAttack = false;
         RotateArms(90);
         leftSpitter.shootTimer = 20f;
         rightSpitter.shootTimer = 20f;
@@ -88,6 +126,7 @@ public class BossManager : MonoBehaviour
 
     private IEnumerator ShotgunBlast()
     {
+        canAttack = false;
         RotateArms(50);
         leftSpitter.shootTimer = 20f;
         rightSpitter.shootTimer = 20f;
@@ -105,13 +144,27 @@ public class BossManager : MonoBehaviour
         switch (side)
         {
             case Direction.LEFT:
+                if (leftDestroyed)
+                {
+                    break;
+                }
                 Destroy(leftArmor);
                 health--;
+                attackTimer *= 0.8f;
+                leftDestroyed = true;
                 break;
+
             case Direction.RIGHT:
+                if (rightDestroyed)
+                {
+                    break;
+                }
                 Destroy(rightArmor);
                 health--;
+                attackTimer *= 0.8f;
+                rightDestroyed = true;
                 break;
+
             case Direction.DOWN:
                 if (health==1)
                 {
@@ -119,16 +172,12 @@ public class BossManager : MonoBehaviour
                 }
                 break;
         }
-
-        if (health==1)
-        {
-            GetComponent<BoxCollider2D>().enabled = true;
-        }
     }
 
     private void GetDestroyed()
     {
         Destroy(this.gameObject);
+        Destroy(doorBlockade);
     }
 
     public enum Direction{

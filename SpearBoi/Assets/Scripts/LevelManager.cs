@@ -30,7 +30,7 @@ public class LevelManager : MonoBehaviour
         endLevelScreen.SetActive(false);
     }
 
-    private void OpenEndLevelScreen()
+    public void OpenEndLevelScreen()
     {
         endLevelScreen.SetActive(true);
         Time.timeScale = 0;
