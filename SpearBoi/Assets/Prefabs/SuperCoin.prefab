@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 4432630090882104207}
   - component: {fileID: 4432630090882104192}
   - component: {fileID: 4432630090882104193}
+  - component: {fileID: -6461171566393603722}
   m_Layer: 0
   m_Name: SuperCoin
   m_TagString: Coin
@@ -97,6 +98,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   coinValue: 5
+  falling: 0
+  maxSpeed: 2
 --- !u!58 &4432630090882104193
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -113,3 +116,24 @@ CircleCollider2D:
   m_Offset: {x: 0.024419188, y: 0.022541046}
   serializedVersion: 2
   m_Radius: 0.5035095
+--- !u!50 &-6461171566393603722
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4432630090882104204}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 7
