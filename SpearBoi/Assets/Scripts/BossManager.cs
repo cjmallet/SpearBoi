@@ -7,7 +7,7 @@ public class BossManager : MonoBehaviour
     public static BossManager Instance { get; private set; }
 
     [SerializeField]
-    private GameObject saw, homingSaw, doorBlockade;
+    private GameObject saw, homingSaw, doorBlockade, bossCoinExplosion;
 
     [SerializeField]
     private int health = 3;
@@ -18,7 +18,7 @@ public class BossManager : MonoBehaviour
     private GameObject leftArmor, rightArmor, leftArm, rightArm;
     private SawSpitter leftSpitter, rightSpitter;
     private float timer;
-    private bool canAttack, leftDestroyed,rightDestroyed;
+    private bool canAttack, leftDestroyed,rightDestroyed, isDying;
 
     private void Awake()
     {
@@ -38,6 +38,11 @@ public class BossManager : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
+        if (isDying)
+        {
+            return;
+        }
+
         if (canAttack)
         {
             timer += Time.deltaTime;
@@ -168,16 +173,21 @@ public class BossManager : MonoBehaviour
             case Direction.DOWN:
                 if (health==1)
                 {
-                    GetDestroyed();
+                    StartCoroutine("GetDestroyed");
                 }
                 break;
         }
     }
 
-    private void GetDestroyed()
+    private IEnumerator GetDestroyed()
     {
-        Destroy(this.gameObject);
+        isDying = true;
+        Instantiate(bossCoinExplosion, transform);
+        leftSpitter.shootTimer = 20;
+        rightSpitter.shootTimer = 20;
         Destroy(doorBlockade);
+        yield return new WaitForSeconds(4);
+        Destroy(this.gameObject);
     }
 
     public enum Direction{

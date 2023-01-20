@@ -6,16 +6,20 @@ public class coin : MonoBehaviour
 {
     public int coinValue;
 
+    public bool falling;
+
     [SerializeField]
-    private bool falling;
+    private float maxSpeed=2;
     
     // Start is called before the first frame update
     void Start()
     {
         if (falling)
         {
-            GetComponent<Rigidbody2D>().constraints= RigidbodyConstraints2D.FreezeRotation;
-            GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezePositionX;
+            GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.None;
+            GetComponent<CircleCollider2D>().isTrigger = false;
+            GetComponent<Rigidbody2D>().AddForce(new Vector2(Random.Range(-maxSpeed, maxSpeed), Random.Range(maxSpeed*0.3f, maxSpeed)));
+            this.gameObject.isStatic = false;
         }
         else
         {
@@ -27,6 +31,15 @@ public class coin : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))
+        {
+            Destroy(this.gameObject);
+            CoinManager.Instance.UpdateCoinCounter(coinValue);
+        }
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.transform.CompareTag("Player"))
         {
             Destroy(this.gameObject);
             CoinManager.Instance.UpdateCoinCounter(coinValue);
