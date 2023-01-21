@@ -19,7 +19,10 @@ public class BossManager : MonoBehaviour
     private SawSpitter leftSpitter, rightSpitter;
     private float timer;
     private SpriteRenderer eyeRenderer;
-    private bool canAttack, leftDestroyed,rightDestroyed, isDying;
+    private bool canAttack, leftDestroyed, rightDestroyed;
+
+    [HideInInspector]
+    public bool isDying;
 
     private void Awake()
     {

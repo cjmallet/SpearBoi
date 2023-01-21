@@ -28942,6 +28942,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1436449374, guid: 019b26a8b5465b24eb2a44239c5a2413, type: 3}
+      propertyPath: maxTime
+      value: 120
+      objectReference: {fileID: 0}
     - target: {fileID: 1990487764241647824, guid: 019b26a8b5465b24eb2a44239c5a2413, type: 3}
       propertyPath: m_Name
       value: CoinCanvas
