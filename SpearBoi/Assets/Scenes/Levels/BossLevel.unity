@@ -18080,6 +18080,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 7206879902903917528, guid: 6295193c85ccc0d44a233526ab8a9eea, type: 3}
+      propertyPath: m_BiasY
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7206879902903917528, guid: 6295193c85ccc0d44a233526ab8a9eea, type: 3}
+      propertyPath: m_ScreenX
+      value: 0.49895835
+      objectReference: {fileID: 0}
+    - target: {fileID: 7206879902903917528, guid: 6295193c85ccc0d44a233526ab8a9eea, type: 3}
+      propertyPath: m_ScreenY
+      value: 0.71000004
+      objectReference: {fileID: 0}
+    - target: {fileID: 7206879902903917528, guid: 6295193c85ccc0d44a233526ab8a9eea, type: 3}
+      propertyPath: m_DeadZoneHeight
+      value: 0.6
+      objectReference: {fileID: 0}
     - target: {fileID: 7206879904588460028, guid: 6295193c85ccc0d44a233526ab8a9eea, type: 3}
       propertyPath: m_Follow
       value: 
@@ -18098,11 +18114,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7206879904588460031, guid: 6295193c85ccc0d44a233526ab8a9eea, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -49.35
+      value: -49.31296
       objectReference: {fileID: 0}
     - target: {fileID: 7206879904588460031, guid: 6295193c85ccc0d44a233526ab8a9eea, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 5.39
+      value: 10.790001
       objectReference: {fileID: 0}
     - target: {fileID: 7206879904588460031, guid: 6295193c85ccc0d44a233526ab8a9eea, type: 3}
       propertyPath: m_LocalPosition.z
@@ -35560,17 +35576,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: Main Camera
       objectReference: {fileID: 0}
+    - target: {fileID: 7599283176576482950, guid: 08d5bca5faa71a6449890def9363bf1d, type: 3}
+      propertyPath: orthographic size
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 7599283176576482951, guid: 08d5bca5faa71a6449890def9363bf1d, type: 3}
       propertyPath: m_RootOrder
       value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 7599283176576482951, guid: 08d5bca5faa71a6449890def9363bf1d, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -49.35
+      value: -49.31296
       objectReference: {fileID: 0}
     - target: {fileID: 7599283176576482951, guid: 08d5bca5faa71a6449890def9363bf1d, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 5.39
+      value: 10.790001
       objectReference: {fileID: 0}
     - target: {fileID: 7599283176576482951, guid: 08d5bca5faa71a6449890def9363bf1d, type: 3}
       propertyPath: m_LocalPosition.z
