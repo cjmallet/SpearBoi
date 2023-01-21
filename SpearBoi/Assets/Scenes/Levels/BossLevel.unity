@@ -16837,9 +16837,9 @@ CircleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -1.5669093, y: 0.30188084}
+  m_Offset: {x: -0.6362381, y: 0.30188084}
   serializedVersion: 2
-  m_Radius: 2.3687892
+  m_Radius: 1.438118
 --- !u!114 &347871249
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16887,9 +16887,9 @@ CircleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 1.5520029, y: 0.33459663}
+  m_Offset: {x: 0.87514925, y: 0.33459663}
   serializedVersion: 2
-  m_Radius: 2.1179676
+  m_Radius: 1.441114
 --- !u!114 &365653161
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18094,7 +18094,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7206879902903917528, guid: 6295193c85ccc0d44a233526ab8a9eea, type: 3}
       propertyPath: m_DeadZoneHeight
-      value: 0.6
+      value: 0.54
       objectReference: {fileID: 0}
     - target: {fileID: 7206879904588460028, guid: 6295193c85ccc0d44a233526ab8a9eea, type: 3}
       propertyPath: m_Follow
